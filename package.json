@@ -1,0 +1,29 @@
+{
+  "name": "vorathex",
+  "version": "0.1.0",
+  "description": "Building an event-sourced matching engine in TypeScript.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/rehanamd.dev/vorathex.git"
+  },
+  "keywords": [
+    "matching-engine",
+    "event-sourcing",
+    "trading",
+    "typescript"
+  ],
+  "author": "Rehan Ahmed",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://gitlab.com/rehanamd.dev/vorathex/issues"
+  },
+  "homepage": "https://gitlab.com/rehanamd.dev/vorathex#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
