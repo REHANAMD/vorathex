@@ -6,17 +6,17 @@
     // ES2023. Targeting higher would emit syntax Node 20 can't parse; lower would
     // make tsc downlevel code the runtime already supports natively.
     "target": "ES2023",
-    "lib": ["ES2023"],                    // no "DOM": this is a backend library
+    "lib": ["ES2023"], // no "DOM": this is a backend library
 
     /* ---- Module system ------------------------------------------------- */
     // package.json says "type": "module". NodeNext is the only setting that models
     // Node's real ESM/CJS resolution rules (extensions, exports maps, dual packages).
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "moduleDetection": "force",           // every file is a module; no accidental globals
-    "verbatimModuleSyntax": true,         // type-only imports must say `import type`
-    "isolatedModules": true,              // each file must be transpilable alone (tsup/vitest do exactly that)
-    "erasableSyntaxOnly": true,           // bans enums, namespaces, parameter properties — see study guide
+    "moduleDetection": "force", // every file is a module; no accidental globals
+    "verbatimModuleSyntax": true, // type-only imports must say `import type`
+    "isolatedModules": true, // each file must be transpilable alone (tsup/vitest do exactly that)
+    "erasableSyntaxOnly": true, // bans enums, namespaces, parameter properties — see study guide
     "resolveJsonModule": true,
 
     /* ---- Emit ----------------------------------------------------------- */
@@ -29,13 +29,13 @@
     "declaration": true,
 
     /* ---- Strictness — the project's first line of defence ---------------- */
-    "strict": true,                       // noImplicitAny, strictNullChecks, strictFunctionTypes, ...
-    "noUncheckedIndexedAccess": true,     // book.get(price) is T | undefined, not T
-    "exactOptionalPropertyTypes": true,   // `price?: Decimal` cannot be set to undefined
+    "strict": true, // noImplicitAny, strictNullChecks, strictFunctionTypes, ...
+    "noUncheckedIndexedAccess": true, // book.get(price) is T | undefined, not T
+    "exactOptionalPropertyTypes": true, // `price?: Decimal` cannot be set to undefined
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,   // matters when we switch on event.type
+    "noFallthroughCasesInSwitch": true, // matters when we switch on event.type
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowUnreachableCode": false,
@@ -44,13 +44,12 @@
 
     /* ---- Interop & performance ------------------------------------------ */
     "esModuleInterop": true,
-    "useDefineForClassFields": true,      // real ES class-field semantics, not the legacy hack
-    "skipLibCheck": true,                 // don't typecheck node_modules/**/*.d.ts
-    "types": ["node"]                     // ONLY Node globals are ambient; no test globals
+    "useDefineForClassFields": true, // real ES class-field semantics, not the legacy hack
+    "skipLibCheck": true, // don't typecheck node_modules/**/*.d.ts
+    "types": ["node"] // ONLY Node globals are ambient; no test globals
   },
 
   // src/ doesn't exist until Day 9 and tests/ until Day 21 — see "How to verify".
   "include": ["src", "tests", "*.config.ts"],
   "exclude": ["node_modules", "dist", "coverage"]
 }
-
