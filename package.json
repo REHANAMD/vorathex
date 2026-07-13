@@ -1,29 +1,81 @@
 {
   "name": "vorathex",
   "version": "0.1.0",
-  "description": "Building an event-sourced matching engine in TypeScript.",
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/rehanamd.dev/vorathex.git"
-  },
+  "description": "A deterministic, event-sourced matching engine in TypeScript.",
   "keywords": [
     "matching-engine",
     "event-sourcing",
+    "order-book",
     "trading",
+    "deterministic",
     "typescript"
   ],
   "author": "Rehan Ahmed",
   "license": "MIT",
-  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/rehanamd.dev/vorathex.git"
+  },
   "bugs": {
     "url": "https://gitlab.com/rehanamd.dev/vorathex/issues"
   },
   "homepage": "https://gitlab.com/rehanamd.dev/vorathex#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "migrations",
+    "README.md",
+    "ARCHITECTURE.md"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "migrate:up": "node-pg-migrate up -m migrations",
+    "migrate:down": "node-pg-migrate down -m migrations",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run test && npm run build"
+  },
+  "dependencies": {
+    "decimal.js": "^10.6.0",
+    "ioredis": "^5.11.1",
+    "pg": "^8.22.0",
+    "pino": "^10.3.1",
+    "zod": "^4.4.3"
+  },
   "devDependencies": {
-    "typescript": "^6.0.3"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.20.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "node-pg-migrate": "^8.0.4",
+    "pino-pretty": "^13.1.3",
+    "prettier": "^3.9.5",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10"
   }
 }
