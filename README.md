@@ -1,3 +1,7 @@
+I<p align="center">
+<img src="./logo.png" alt="Vorathex Logo" width="220">
+</p>
+
 # Vorathex
 
 An event-sourced matching engine, written in TypeScript.
@@ -43,7 +47,7 @@ IDs, graceful shutdown, health checks, and a real test suite.
 
 ## How a request flows
 
-```
+```text
 client  ->  Redis Stream  ->  ingestion worker  ->  matching engine
                                                           |
                                                    appends events
